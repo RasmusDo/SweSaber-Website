@@ -14,13 +14,13 @@ for i in urls:
     player = soup.find_all("span", {"class": "songTop pp"})
     playerPP = soup.find_all("span", {"class": "scoreTop ppValue"})
 
-    for idx, key in enumerate(player):
-        for i in playerPP[idx]: 
-            playerPP[idx] = i
-        for i in player[idx]:
-            player[idx] = i
+for idx, key in enumerate(player):
+    for i in playerPP[idx]: 
+        playerPP[idx] = i
+    for i in player[idx]:
+        player[idx] = i
 
-        playerNames[player[idx]] = playerPP[idx]
+    playerNames[player[idx]] = playerPP[idx]
 
 with open("database.csv", "w", encoding="utf8") as f:
     for i in playerNames:
