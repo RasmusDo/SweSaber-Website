@@ -7,6 +7,7 @@ playerNames = {}
 
 for i in urls:
 
+
     page = requests.get(i)
     soup = BeautifulSoup(page.content, 'lxml')
 
