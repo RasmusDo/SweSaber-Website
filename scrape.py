@@ -5,22 +5,26 @@ urls = ["https://scoresaber.com/global?country=se", "https://scoresaber.com/glob
 
 playerNames = {}
 
-for i in urls:
+def skrappu():
+    for i in urls:
+        page = requests.get(i)
+        soup = BeautifulSoup(page.content, 'lxml')
+
+        player = soup.find_all("span", {"class": "songTop pp"})
+        playerPP = soup.find_all("span", {"class": "scoreTop ppValue"})
+
+        for idx in range(len(player)):
+            for i in playerPP[idx]: 
+                playerPP[idx] = i
+            for i in player[idx]:
+                player[idx] = i
+
+            playerNames[player[idx]] = playerPP[idx]
+    return playerNames
+print(skrappu())
 
 
-    page = requests.get(i)
-    soup = BeautifulSoup(page.content, 'lxml')
 
-    player = soup.find_all("span", {"class": "songTop pp"})
-    playerPP = soup.find_all("span", {"class": "scoreTop ppValue"})
-
-for idx, key in enumerate(player):
-    for i in playerPP[idx]: 
-        playerPP[idx] = i
-    for i in player[idx]:
-        player[idx] = i
-
-    playerNames[player[idx]] = playerPP[idx]
 
 with open("database.csv", "w", encoding="utf8") as f:
     for i in playerNames:

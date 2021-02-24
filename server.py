@@ -22,15 +22,15 @@ def click():
         player = soup.find_all("span", {"class": "songTop pp"})
         playerPP = soup.find_all("span", {"class": "scoreTop ppValue"})
 
-    for idx, key in enumerate(player):
-        for i in playerPP[idx]: 
-            playerPP[idx] = i
-        for i in player[idx]:
-            player[idx] = i
+        for idx in range(len(player)):
+            for i in playerPP[idx]: 
+                playerPP[idx] = i
+            for i in player[idx]:
+                player[idx] = i
 
-        playerNames[player[idx]] = playerPP[idx]
+            playerNames[player[idx]] = playerPP[idx]
+
     return playerNames
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
