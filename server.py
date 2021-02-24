@@ -11,7 +11,6 @@ def index():
 
 @app.route("/server.py")
 def click():
-    print("hello")
     urls = ["https://scoresaber.com/global?country=se", "https://scoresaber.com/global/2&country=se"]
 
     playerNames = {}
