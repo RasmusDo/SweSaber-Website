@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
 
 @app.route("/")
 def index():
@@ -29,7 +30,6 @@ def click():
                 player[idx] = i
 
             playerNames[player[idx]] = playerPP[idx]
-
     return playerNames
 
 if __name__ == '__main__':
