@@ -8,10 +8,6 @@ app.config['JSON_SORT_KEYS'] = False
 
 @app.route("/")
 def index():
-    return render_template('index.html')
-
-@app.route("/server.py")
-def click():
     urls = ["https://scoresaber.com/global?country=se", "https://scoresaber.com/global/2&country=se"]
 
     playerNames = {}
@@ -31,6 +27,7 @@ def click():
 
             playerNames[player[idx]] = playerPP[idx]
     return playerNames
+    #return render_template('index.html', players = playerNames)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
