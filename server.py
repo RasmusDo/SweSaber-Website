@@ -10,7 +10,7 @@ app.config['JSON_SORT_KEYS'] = False
 def index():
     urls = ["https://scoresaber.com/global?country=se", "https://scoresaber.com/global/2&country=se"]
 
-    playerNames = {}
+    playerNames = []
 
     for i in urls:
         page = requests.get(i)
@@ -25,9 +25,8 @@ def index():
             for i in player[idx]:
                 player[idx] = i
 
-            playerNames[player[idx]] = playerPP[idx]
-    return playerNames
-    #return render_template('index.html', players = playerNames)
+            playerNames.append([player[idx], playerPP[idx]])
+    return render_template('index.html', players = playerNames)
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)

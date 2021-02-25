@@ -3,21 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="scrape.py"></script>
-
     <link rel="css" href="stylesheet.css">
-    <title>sss</title>
-    <style>
-        body {
-            text-align: center;
-        }
-        form {
-            display: inline-block;
-            margin-top: 25%;
-        }
-    </style>
+    <title>dab</title>
 </head>
 <body>  
+    <table>
+    {% for i in range(players|length) %}
+    <tr>
+    <td>{{players[i]}}</td>
+    </tr>
+    {% endfor %}
+    </table>
     <!--<form action="/server.py">
         <input type="submit" value="Get Data" />
     </form>-->
